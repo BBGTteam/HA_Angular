@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../app.component';
+import { ChartsService } from '../Shared/charts.service';
 import { HttpService } from '../Shared/http.service';
 
 @Component({
@@ -9,16 +9,10 @@ import { HttpService } from '../Shared/http.service';
 })
 export class MainComponent implements OnInit {
 
-  constructor(public http: HttpService, public app: AppComponent) { }
+  constructor(public http: HttpService, public charts: ChartsService ) { }
 
   ngOnInit(): void {
-    console.log(this.http.test)
-    this.http.getMessageFromArduinoServer();
+    this.http.getMessageFromArduinoServer(this.charts.chartGive());
   }
-
-  // sendMessage(msg: String){
-  //   this.app.appSocket.emit('message', msg)
-    
-  // }
 
 }
