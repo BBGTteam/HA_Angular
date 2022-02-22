@@ -13,7 +13,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log(this.charts.chartGive());
-    setInterval(this.http.keepAlive, 50000);
+    setInterval(this.http.keepAlive, 30000);
     this.http.getMessageFromArduinoServer(this.charts.chartGive());
   }
 }
