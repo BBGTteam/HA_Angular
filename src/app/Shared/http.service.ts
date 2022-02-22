@@ -9,7 +9,6 @@ const socket = io('http://192.168.1.113:3005');
 })
 
 export class HttpService {
-  title = 'dashboard';
 
   constructor(public charts: ChartsService) { }
   
@@ -21,8 +20,22 @@ export class HttpService {
     socket.on('bazsi_array', (res) => {
       var temp = [res[0][1]];
       var hum = [res[0][2]];
-      this.charts.updateChartData(chart, temp, 0);
-      this.charts.updateChartData(chart, hum, 1);
+      this.charts.updateChartData(chart[0], temp, 0);
+      this.charts.updateChartData(chart[0], hum, 1);
+    })
+    
+    socket.on('tomi_array', (res) => {
+      var temp = [res[0][1]];
+      var hum = [res[0][2]];
+      this.charts.updateChartData(chart[1], temp, 0);
+      this.charts.updateChartData(chart[1], hum, 1);
+    })
+
+    socket.on('gabi_array', (res) => {
+      var temp = [res[0][1]];
+      var hum = [res[0][2]];
+      this.charts.updateChartData(chart[2], temp, 0);
+      this.charts.updateChartData(chart[2], hum, 1);
     })
   }
 
