@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import io from 'socket.io-client';
 import { ChartsService } from './charts.service';
 
-const socket = io('http://192.168.1.113:3005');
+const socket = io('http://192.168.1.113:3000');
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,10 @@ export class HttpService {
   
   sendMessage(msg: String){
     socket.emit('message', msg)
+  }
+  
+  keepAlive(){
+    socket.emit('message', "keep alive")
   }
 
   getMessageFromArduinoServer(chart: any){
