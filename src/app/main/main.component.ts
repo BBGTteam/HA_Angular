@@ -12,7 +12,6 @@ export class MainComponent implements OnInit {
   constructor(public http: HttpService, public charts: ChartsService ) { }
 
   ngOnInit(): void {
-    // console.log(this.charts.chartGive());
     setInterval(this.http.keepAlive, 30000);
     this.http.getMessageFromArduinoServer(this.charts.chartGive());
   }

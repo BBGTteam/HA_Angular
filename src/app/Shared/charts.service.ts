@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 
-
-
 Chart.register(...registerables);
 
 @Injectable({
@@ -23,7 +21,7 @@ export class ChartsService {
             plugins: {
               title: {
                 display: true,
-                text: 'Combo Bar and line Chart'
+                text: 'Bazsi room'
               },
             }
             
@@ -49,7 +47,7 @@ export class ChartsService {
             plugins: {
               title: {
                 display: true,
-                text: 'Combo Bar and line Chart'
+                text: 'Tomi room'
               },
             }
             
@@ -74,7 +72,7 @@ export class ChartsService {
             plugins: {
               title: {
                 display: true,
-                text: 'Combo Bar and line Chart'
+                text: 'Gabi room'
               },
             }
             
@@ -92,7 +90,6 @@ export class ChartsService {
             ]
           }
         });
-        // console.log(this.chart_gabi);
         return [this.chart_bazsi, this.chart_tomi, this.chart_gabi];
   }
 
@@ -100,5 +97,4 @@ export class ChartsService {
     chart.data.datasets[0].data[dataSetIndex] = data;
     chart.update();
   }
-
 }
