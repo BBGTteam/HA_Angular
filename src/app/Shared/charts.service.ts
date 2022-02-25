@@ -27,12 +27,12 @@ export class ChartsService {
             
           },
           data: {
-            labels: ['temp', 'hum'],
+            labels: ['jelenlegi hőmérséklet','beállított hőmérséklet', 'hum'],
             datasets: [
               {
                 type: 'bar',
                 label: 'Temperature',
-                data: [24, 40],
+                data: [24, 20, 40],
                 backgroundColor: 'rgba(255,0,255,0.8)',
                 borderColor: 'rgba(255,0,255,0.4)',
               },
