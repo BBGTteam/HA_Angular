@@ -1,10 +1,24 @@
 <button (click)="this.http.sendMessage('0ledCp')">led on</button>
-<button (click)="this.http.sendMessage('Bazsi,setTemp,26')">Set temp Bazsi</button>
-<button (click)="this.http.sendMessage('Tomi,setTemp,22')">Set temp Tomi</button>
-<button (click)="this.http.sendMessage('Gabi,setTemp,22')">Set temp Gabi</button>
 
+<div>
+    <mat-card>
+        <div style="margin: auto; width: 50%; text-align: center; font-size: x-large;" >
+        <label>{{sliderOutput}}</label>
+        </div>
+        <mat-slider class="slider"
+        (change)="updateSetting($event)"
+        min="16" 
+        max="26" 
+        step="0.5"
+        thumbLabel=true
+        >
+    </mat-slider>
+    
+</mat-card>
+
+</div>
 <div class="chart-display">
-    <div style="width: 50%; position: absolute;left: 0px;">
+    <div style="width: 100%; position: absolute;left: 0px;">
         <div style="width: 100%;">
             <canvas id="bar"></canvas>
         </div>
@@ -16,4 +30,3 @@
         </div>
     </div>
 </div>
-
