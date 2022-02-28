@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartsService } from '../Shared/charts.service';
 import { HttpService } from '../Shared/http.service';
 import { TempsService } from '../Shared/temps.service';
-import jsonData from '../../../../../HomeAutomation/data/db.json';
+
 
 @Component({
   selector: 'app-main',
@@ -10,13 +10,21 @@ import jsonData from '../../../../../HomeAutomation/data/db.json';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+
+  constructor(public http: HttpService, public charts: ChartsService) { }
   
-  tempBazsiMin = jsonData.Bazsi.tempMin;
-  constructor(public http: HttpService, public charts: ChartsService, public temps: TempsService ) { }
+  
+  width = "350";
+  height = "200";
+  type = "angulargauge";
+  dataFormat = "json";
+  dataSource = this.charts.tempBazsi;
+  
 
   ngOnInit(): void {
     setInterval(this.http.keepAlive, 30000);
     this.http.getMessageFromArduinoServerToChart(this.charts.chartGive());
+    this.http.getMessageToTemp();
   }
 
   updateSetting(event: any){

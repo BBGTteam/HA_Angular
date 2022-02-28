@@ -1,33 +1,35 @@
 <button (click)="this.http.sendMessage('0ledCp')">led on</button>
 
-<div>
-    <mat-card>
-        <div style="margin: auto; width: 50%; text-align: center; font-size: x-large;" >
-        <label>{{tempBazsiMin}}</label>
-        </div>
-        <mat-slider class="slider"
-        (change)="updateSetting($event)"
-        [(ngModel)]="tempBazsiMin"
-        min="16" 
-        max="26" 
-        step="0.5"
-        thumbLabel=true
-        >
-    </mat-slider>
-    
-</mat-card>
-
-</div>
 <div class="chart-display">
-    <div style="width: 100%; position: absolute;left: 0px;">
-        <div style="width: 100%;">
-            <canvas id="bar"></canvas>
-        </div>
-        <div style="width: 100%;">
-            <canvas id="bar_tomi"></canvas>
-        </div>
-        <div style="width: 100%;">
-            <canvas id="bar_gabi"></canvas>
-        </div>
-    </div>
+    
+            <mat-card >
+                <fusioncharts class="gauge"
+                    [width]="width"
+                    [height]="height"
+                    [type]="type"
+                    [dataFormat]="dataFormat"
+                    [dataSource]="dataSource">
+                </fusioncharts>
+                
+                <canvas id="bar_bazsi"></canvas>
+
+                <label>Temp: {{this.charts.tempBazsiMin}}</label>
+                <mat-slider class="slider"
+                (change)="updateSetting($event)"
+                [(ngModel)]="this.charts.tempBazsiMin"
+                min="16" 
+                max="26" 
+                step="0.5"
+                thumbLabel=true
+                vertical=false
+                >
+                </mat-slider>
+            </mat-card>
+            <mat-card>
+                <canvas id="bar_tomi"></canvas>
+            </mat-card>
+            <mat-card>
+                <canvas id="bar_gabi"></canvas>
+            </mat-card>
 </div>
+

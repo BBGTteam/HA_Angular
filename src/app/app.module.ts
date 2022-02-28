@@ -8,6 +8,15 @@ import { HttpService } from './Shared/http.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 
+import { FusionChartsModule } from "angular-fusioncharts";
+
+import * as FusionCharts from "fusioncharts";
+import * as charts from "fusioncharts/fusioncharts.charts";
+import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+import * as Widgets from "fusioncharts/fusioncharts.widgets.js";
+import * as Gantt from "fusioncharts/fusioncharts.gantt.js";
+
+FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme, Widgets, Gantt);
 
 @NgModule({
   declarations: [
@@ -19,7 +28,8 @@ import { MaterialModule } from './material/material.module';
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FusionChartsModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
