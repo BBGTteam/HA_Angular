@@ -12,7 +12,7 @@ const socket = io('http://192.168.1.113:3000');
 
 export class HttpService {
 
-  constructor(public charts: ChartsService) { }
+  constructor(public charts: ChartsService, public temps: TempsService) { }
   
   sendMessage(msg: String){
     socket.emit('message', msg)
@@ -26,8 +26,8 @@ export class HttpService {
     socket.on('bazsi_array', (res) => {
       var temp = [res[0][1]];
       var hum = [res[0][2]];
-      // this.tempBazsiCurrent = temp[0];
-      // console.log(this.tempBazsiCurrent);
+      // var tempBazsiCurrent = temp[0];
+      // console.log(tempBazsiCurrent);
       this.charts.updateChartData(chart[0], temp, 0);
       this.charts.updateChartData(chart[0], hum, 2);
     })
@@ -50,7 +50,18 @@ export class HttpService {
   getMessageToTemp(){
     socket.on('bazsi_array', (res) => {
       var temp = res[0][1];
-      this.charts.tempBazsi.dials.dial[0].value = temp;
+      this.temps.tempBazsi.dials.dial[0].value = temp;
     })
+    
+    socket.on('tomi_array', (res) => {
+      var temp = res[0][1];
+      this.temps.tempTomi.dials.dial[0].value = temp;
+    })
+    
+    socket.on('gabi_array', (res) => {
+      var temp = res[0][1];
+      this.temps.tempGabi.dials.dial[0].value = temp;
+    })
+
   }
 }

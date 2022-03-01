@@ -3,33 +3,31 @@
 <div class="chart-display">
     
             <mat-card >
-                <fusioncharts class="gauge"
+                <fusioncharts
                     [width]="width"
                     [height]="height"
                     [type]="type"
                     [dataFormat]="dataFormat"
-                    [dataSource]="dataSource">
+                    [dataSource]="dataSourceBazsi">
                 </fusioncharts>
-                
-                <canvas id="bar_bazsi"></canvas>
-
-                <label>Temp: {{this.charts.tempBazsiMin}}</label>
-                <mat-slider class="slider"
-                (change)="updateSetting($event)"
-                [(ngModel)]="this.charts.tempBazsiMin"
-                min="16" 
-                max="26" 
-                step="0.5"
-                thumbLabel=true
-                vertical=false
-                >
-                </mat-slider>
             </mat-card>
             <mat-card>
-                <canvas id="bar_tomi"></canvas>
+                <fusioncharts
+                    [width]="width"
+                    [height]="height"
+                    [type]="type"
+                    [dataFormat]="dataFormat"
+                    [dataSource]="dataSourceTomi">
+                </fusioncharts>
             </mat-card>
             <mat-card>
-                <canvas id="bar_gabi"></canvas>
+                <fusioncharts
+                    [width]="width"
+                    [height]="height"
+                    [type]="type"
+                    [dataFormat]="dataFormat"
+                    [dataSource]="dataSourceGabi">
+                </fusioncharts>
             </mat-card>
 </div>
 

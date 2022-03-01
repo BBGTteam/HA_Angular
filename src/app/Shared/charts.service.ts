@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import jsonData from '../../../../../HomeAutomation/data/db.json';
 
 Chart.register(...registerables);
 
@@ -14,9 +13,6 @@ export class ChartsService {
   chart_tomi: Chart | undefined;
   chart_gabi: Chart | undefined;
 
-  tempBazsiMin = jsonData.Bazsi.tempMin;
-
-  
   chartGive(){
     this.chart_bazsi = new Chart('bar_bazsi', {
           type: 'bar',
@@ -103,57 +99,4 @@ export class ChartsService {
     chart.data.datasets[0].data[dataSetIndex] = data;
     chart.update();
   }
-
-  tempBazsi = {
-      chart: {
-        // caption: "Bazsi szoba",
-        lowerlimit: "18",
-        upperlimit: "28",
-        showvalue: "1",
-        numbersuffix: "°C",
-        theme: "umber"
-      },
-      colorrange: {
-        color: [
-          {
-            minvalue: "18",
-            maxvalue: "22",
-            code: "#3633ff"
-          },
-          {
-            minvalue: "22",
-            maxvalue: "24",
-            code: "#55ff33"
-          },
-          {
-            minvalue: "24",
-            maxvalue: "28",
-            code: "#c40a0a"
-          }
-        ]
-      },
-      dials: {
-        dial: [
-          {
-            value: 23,
-            tooltext: "<b>9%</b> lesser that target"
-          }
-        ]
-      },
-      trendpoints: {
-        point: [
-          {
-            startvalue: this.tempBazsiMin,
-            displayvalue: "Beállított hőmérséklet",
-            thickness: "2",
-            color: "#E15A26",
-            usemarker: "1",
-            markerbordercolor: "#E15A26",
-            markertooltext: this.tempBazsiMin
-          }
-        ]
-      }
-    };
-
-
 }

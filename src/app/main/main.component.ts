@@ -10,20 +10,21 @@ import { TempsService } from '../Shared/temps.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
-  constructor(public http: HttpService, public charts: ChartsService) { }
+  constructor(public http: HttpService, public charts: ChartsService, public temps: TempsService) { }
   
   
   width = "350";
   height = "200";
   type = "angulargauge";
   dataFormat = "json";
-  dataSource = this.charts.tempBazsi;
+  dataSourceBazsi = this.temps.tempBazsi;
+  dataSourceTomi = this.temps.tempTomi;
+  dataSourceGabi = this.temps.tempGabi;
   
 
   ngOnInit(): void {
     setInterval(this.http.keepAlive, 30000);
-    this.http.getMessageFromArduinoServerToChart(this.charts.chartGive());
+    // this.http.getMessageFromArduinoServerToChart(this.charts.chartGive());
     this.http.getMessageToTemp();
   }
 
